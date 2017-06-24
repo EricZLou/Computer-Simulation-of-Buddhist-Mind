@@ -1,6 +1,6 @@
 # Sense object, images of rupa objects such as visibleform, sound, etc.
 
-from senses.sensebase import *
+from senses.sense_base import *
 
 
 class SenseObj(object):

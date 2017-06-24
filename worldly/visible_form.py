@@ -3,7 +3,7 @@
 
 
 import datetime
-from worldly.rupaobject import RupaObj
+from worldly.rupa_object import RupaObj
 
 
 class VisibleForm(RupaObj):

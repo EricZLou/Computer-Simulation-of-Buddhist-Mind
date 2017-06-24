@@ -25,4 +25,4 @@ class RupaObj(object):
 
     def print(self):
         for kv in self.features_dc.items():
-            print(kv)
+            print(kv[0]+ ":", kv[1])
