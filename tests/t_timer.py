@@ -14,3 +14,43 @@ if run == "start":
         mins += 1
     # Bring up the dialog box here
     print('wake up')
+
+# test queue and thread
+
+from Queue import Queue
+from threading import Thread
+
+def do_stuff(q):
+  while True:
+    print q.get()
+    q.task_done()
+
+q = Queue(maxsize=0)
+num_threads = 10
+
+for i in range(num_threads):
+  worker = Thread(target=do_stuff, args=(q,))
+  worker.setDaemon(True)
+  worker.start()
+
+for x in range(100):
+  q.put(x)
+
+q.join()
+
+# simple queue class to use  a list
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0,item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)

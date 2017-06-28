@@ -3,12 +3,10 @@
 
 
 import datetime
-from worldly.rupa_object import RupaObj
-from process.basics import *
+from worldly.rupaobject import RupaObj
+
 
 class VisibleForm(RupaObj):
-    sense_type = SenseType.eye
-
     def __init__(self,  size, shape, color):
         RupaObj.__init__(self, datetime.datetime.now())
         self.size = size

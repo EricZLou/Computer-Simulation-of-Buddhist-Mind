@@ -4,9 +4,12 @@
 
 import datetime
 from worldly.rupa_object import RupaObj
+from process.basics import *
 
 
 class SmellForm(RupaObj):
+    sense_type = SenseType.nose
+
     def __init__(self,  intensity, smell):
         RupaObj.__init__(self, datetime.datetime.now())
         self.intensity = intensity

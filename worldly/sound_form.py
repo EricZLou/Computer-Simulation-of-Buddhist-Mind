@@ -3,10 +3,13 @@
 
 
 import datetime
-from worldly.rupa_object import RupaObj
+from rupa_object import RupaObj
+from process.basics import *
 
 
 class SoundForm(RupaObj):
+    sense_type = SenseType.ear
+
     def __init__(self, loudness, feeling):
         RupaObj.__init__(self, datetime.datetime.now())
         self.loudness = loudness

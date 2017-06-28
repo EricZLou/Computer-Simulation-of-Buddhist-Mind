@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.4.2 (C:\Python34\python.exe)" project-jdk-type="Python SDK" />
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings is-module-sdk="true">
-        <option name="myUseModuleSdk" value="true" />
-      </console-settings>
-    </option>
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5.3 (C:\Users\Admin\Anaconda2\envs\py35\python.exe)" project-jdk-type="Python SDK" />
 </project>
