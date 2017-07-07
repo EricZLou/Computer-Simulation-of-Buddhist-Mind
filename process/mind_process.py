@@ -1,23 +1,19 @@
-# Five door process
-#
+# Mind door process - Clear/Non-clear
+#   four folds: very clear, clear, obscure, very obscure
 
 from process.globalvar import *
-from senses.citta_eye import *
 from process.cogprocess import CognitiveProcess
 # from process.bhost import *
 # from process.bavanga import Bavanga
 # from senses.citta import *
+# from senses.citta_eye import *
+# from senses.being import Being
 
-class FiveDoorProcess(CognitiveProcess):
-    def __init__(self, being, basetype, robj, env, ticks=0):
+
+class MindProcess(CognitiveProcess):
+    def __init__(self, being, sobj, ticks=0):
         super().__init__(being, ticks)
-        self.sobj =  SenseObj(being.base(basetype), robj, env)
-        self.sobj.tick(ticks)
-
-    def tick(self, n=1):
-        # process and sense obj both tick in sync
-        self.ticks += n
-        self.sobj.tick(n)
+        self.sobj = sobj
 
     def run(self):
         ba = self.being.bavanga
@@ -37,7 +33,7 @@ class FiveDoorProcess(CognitiveProcess):
 
     def regcourse(self, ba):
         # course ending with registration
-        print('very great object cognitive process')
+        print('very clear object mind door process')
         str17 = self.dofutile(ba)
         str17 = str17 + self.dodetermination(ba)
         str17 = str17 + self.dojavana(ba)
@@ -46,7 +42,7 @@ class FiveDoorProcess(CognitiveProcess):
 
     def javanacourse(self, ba, tickspast):
         # course ending with javana
-        print('great object cognitive process-no registration')
+        print('clear object mind door process-no registration')
         str17='P '
         if tickspast == g_tickpassed_great:
             str17='P P '
@@ -58,6 +54,7 @@ class FiveDoorProcess(CognitiveProcess):
             str17 = str17 + 'B '
         print(str17)
 
+
     def determcourse(self, ba, tickspast):
         # course ending with determination
         print('fine cognitive process-no javana')
@@ -66,9 +63,9 @@ class FiveDoorProcess(CognitiveProcess):
             str17 = str17 + 'P '
         str17 = str17 + self.dofutile(ba)
         str17 = str17 + self.dodetermination(ba)
-        str17 = str17 +'D '
+        str17 = str17 +'M '
         if tickspast < g_tickpassed_fine:
-            str17 = str17 +'D '
+            str17 = str17 +'M '
             for j in range(tickspast+1, g_tickpassed_fine):
                 str17 = str17 + 'B '
         else:
@@ -90,11 +87,27 @@ class FiveDoorProcess(CognitiveProcess):
     def dodetermination(self, ba):
         ba.arrest();
         self.tick()
-        #5door adverting to pick from central queue. This should be the point where
-        #obj is bound. Inpact is just to make aware of the presence of an obj
-        #doorAdv = CittaDoorAdverting()
-        # now sense citta
-        #citta = CittaEye(self.being.eye, self.robj, self.env.light)
-        # next arise receiving citta
+        # mind door adverting is the determinaing citta
         print('determining...')
-        return 'A F E Rc I D '
+        return 'A M '
+
+# -----------------------------------------------------------------
+class ConsequentProcess(MindProcess):
+    def __init__(self, being, robj, env, doorproc):
+        super().__init__(being, robj, env)
+        self.doorproc = doorproc #previous 5door process
+
+    # for consequent sense sphere mind process
+    def makeWhole(self):
+        return ''
+
+    def makeColor(self):
+        return ''
+
+    def makeEntity(self):
+        # shape etc.
+        return ''
+
+    def makeName(self):
+        # grasp name
+        return ''

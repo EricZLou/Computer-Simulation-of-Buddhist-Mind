@@ -11,8 +11,14 @@ class SmellForm(RupaObj):
     sense_type = SenseType.nose
 
     def __init__(self,  intensity, smell):
-        RupaObj.__init__(self, datetime.datetime.now())
+        super().__init__()
         self.intensity = intensity
         self.smell = smell
         super().addFeature('intensity', intensity)
         super().addFeature('smell', smell)
+        self.basetype = DoorType.nose
+
+    def makejson(self):
+        jdic = super().makejson()
+        return {'class':'SmellForm', 'data':jdic}
+

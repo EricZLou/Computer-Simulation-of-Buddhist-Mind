@@ -3,16 +3,21 @@
 
 
 import datetime
-from rupa_object import RupaObj
+from worldly.rupa_object import RupaObj
 from process.basics import *
 
 
 class TouchForm(RupaObj):
     sense_type = SenseType.body
 
-    def __init__(self, temp, texture):
-        RupaObj.__init__(self, datetime.datetime.now())
-        self.temp = temp
+    def __init__(self, pressure, texture):
+        RupaObj.__init__(self)
+        self.pressure = pressure
         self.texture = texture
-        super().addFeature('temp', temp)
+        super().addFeature('pressure', pressure)
         super().addFeature('texture', texture)
+        self.basetype = DoorType.body
+
+    def makejson(self):
+        jdic = super().makejson()
+        return {'class':'TouchForm', 'data':jdic}

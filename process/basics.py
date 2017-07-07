@@ -8,11 +8,26 @@ class Wholesomeness(Enum):
     variable = 0
 
 
+class ObjectDesirable(Enum):
+    undesirable = -1
+    desirable = 0
+    verydesirable = 1
+
+
 class Greatness(Enum):
+    # physical object
     veryfine = 1
     fine = 2
     great = 3
     verygreat = 4
+
+
+class Clearness(Enum):
+    # mind object
+    veryobscure = 1
+    obscure = 2
+    clear = 3
+    veryclear = 4
 
 
 class Feelings(Enum):
@@ -24,6 +39,15 @@ class Feelings(Enum):
 
 
 class SenseType(Enum):
+    eye = 1
+    ear = 2
+    nose = 3
+    tongue = 4
+    body = 5
+    mind = 0
+
+
+class DoorType(Enum):
     eye = 1
     ear = 2
     nose = 3

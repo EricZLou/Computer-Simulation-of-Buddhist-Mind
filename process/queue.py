@@ -1,6 +1,5 @@
 # FIFO timed queue class, utilizing a linked list
 
-import datetime
 from process.globalvar import *
 
 class TNode(object):
@@ -71,3 +70,6 @@ class TQueue(object):
 
     def size(self):
         return self.len
+
+    def isempty(self):
+        return self.len==0

@@ -3,18 +3,24 @@
 
 
 import datetime
-from rupa_object import RupaObj
+from worldly.rupa_object import RupaObj
 from process.basics import *
 
 
 class TasteForm(RupaObj):
     sense_type = SenseType.tongue
 
-    def __init__(self, temp, taste, texture):
-        RupaObj.__init__(self, datetime.datetime.now())
-        self.temp = temp
+    def __init__(self, taste, temprature, richness):
+        RupaObj.__init__(self)
+        self.temprature = temprature
         self.taste = taste
-        self.texture = texture
-        super().addFeature('temp', temp)
+        self.richness = richness
+        super().addFeature('temprature', temprature)
         super().addFeature('taste', taste)
-        super().addFeature('texture', texture)
+        super().addFeature('richness', richness)
+        self.basetype = DoorType.tongue
+
+    def makejson(self):
+        jdic = super().makejson()
+        return {'class':'TasteForm', 'data':jdic}
+
