@@ -1,5 +1,5 @@
 # bavanga stream
-
+# Changes tick count based on step
 
 class Bavanga(object):
     def __init__(self, citta):

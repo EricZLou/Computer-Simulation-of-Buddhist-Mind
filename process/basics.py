@@ -1,4 +1,5 @@
 # bavanga stream
+# gives values to basic conditions
 from enum import Enum
 
 

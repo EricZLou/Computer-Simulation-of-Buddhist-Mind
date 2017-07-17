@@ -1,5 +1,6 @@
 # Five door process
-#
+# Uses cogprocess.py
+# For the 5 door process, prints full string of steps
 
 from process.globalvar import *
 from senses.citta_eye import *

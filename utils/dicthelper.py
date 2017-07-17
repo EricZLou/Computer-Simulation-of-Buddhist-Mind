@@ -4,7 +4,7 @@ def compareDictByKey(dict1, dict2):
     # dictionaries are unordered, so we can keep keys in a set and compare set
     s1 = set(dict1.keys())
     s2 = set(dict2.keys())
-    s0 = s1.difference(s2)
+    s0 = s1.symmetric_difference(s2)
     return len(s0)==0
 
 # feat0: dict

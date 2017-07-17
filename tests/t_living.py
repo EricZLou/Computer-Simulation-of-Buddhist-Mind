@@ -33,7 +33,7 @@ def do_eye(q, scen):
     while True:
         scen.post(q)
         cnt += 1
-        print('\nEvent posted...%d', cnt)
+        print('\nEvent posted...%d' %cnt)
         time.sleep(10)
 
 t_eye = Thread(target=do_eye, args=(q, scen))
@@ -50,7 +50,7 @@ while True:
         cnt += 1
         e = q.get()
         rslt = dummy.process(e, e.ticks_passed)
-        print('\nOne event processed...%d', cnt)
+        print('\nOne event processed...%d' %cnt)
         if rslt == False:
             print('Exception... break')
             break
@@ -75,7 +75,7 @@ def testTimer():
     if run == "start":
         # Loop until we reach 20 minutes running
         while mins != 2:
-            print(">>>>>>>>>>>>>>>>>>>>> %f", mins)
+            print(">>>>>>>>>>>>>>>>>>>>> %f" %mins)
             # Sleep for a minute
             time.sleep(10)
             # Increment the minute total

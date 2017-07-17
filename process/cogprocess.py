@@ -1,4 +1,5 @@
 # Cognitive process
+# Returns string of steps for each individual part of cog process
 
 # from process.globalvar import *
 # from process.bhost import *
@@ -6,7 +7,7 @@
 # from senses.citta import *
 # from senses.citta_eye import *
 # from senses.being import Being
-#
+
 class CognitiveProcess(object):
     def __init__(self, being, ticks=0):
         # robj: rupa object

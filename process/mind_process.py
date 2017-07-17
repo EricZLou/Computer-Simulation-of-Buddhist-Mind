@@ -1,5 +1,7 @@
 # Mind door process - Clear/Non-clear
 #   four folds: very clear, clear, obscure, very obscure
+# Uses cogprocess.py
+# For the mind door process, prints full string of steps
 
 from process.globalvar import *
 from process.cogprocess import CognitiveProcess

@@ -19,7 +19,7 @@ class FeatureMemory(object):
 
 class ObjectMemory(object):
     match_floor = 0.9
-    ObjectMemory = 1.0
+    match_perfect = 1.0
     # Object repo is a dict of name-serialized_obj_string (JSON)
     def __init__(self, being):
         self.being = being
