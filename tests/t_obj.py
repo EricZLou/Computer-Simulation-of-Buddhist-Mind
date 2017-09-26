@@ -1,9 +1,9 @@
 # test worldly objects
 
 import json
-from worldly.visible_form import VisibleForm
+from worldly.visible_form import *
 
-tree = VisibleForm(10,'round','green')
+tree = VisibleForm(10,VisibleShape.high, VisibleColor.blue)
 gun = VisibleForm(3, 'handgun-shaped','silver')
 car = VisibleForm(8, '', 'red')
 person = VisibleForm(5, 'fat', 'white')

@@ -2,16 +2,17 @@
 # different fom SenseObject which are sensory organ's image of these rupa objects
 
 import json
-import time
+from senses.ticked_object import TickedObj
 from process.basics import *
 from utils.dicthelper import *
 from process.globalvar import *
 
-class RupaObj(object):
+class RupaObj(TickedObj):
     instance_id = 0
-    def __init__(self):
-        # dt is sampling datetime
-        self.startdt = time.time() # epoch time (in sec) when obj is created
+
+    def __init__(self, tclock):
+        # tclock is either TickClock or TickRealClock
+        super().__init__(tclock)
         self.name = 'null'  #obj identified by a name or concept
         self.features_dc = {} # dictionary of things
         self.desirable = ObjectDesirable.desirable # this causes equinimity/neutral
@@ -19,6 +20,7 @@ class RupaObj(object):
         self.instance_id = RupaObj.instance_id
         self.basetype = DoorType.mind
 
+    # note, because of features_dc, use setters, rather than direct assign
     def addFeature(self, key, value):
         self.features_dc[key]=value
 
@@ -42,17 +44,18 @@ class RupaObj(object):
         return matchFeature(self.features_dc, features)
 
     # return num of seconds lapsed since object created
-    def timelapsed(self, time1=0):
-        if time1 > 0:
-            return time1 - self.startdt
-        else:
-            return time.time() - self.startdt
+    def timelapsed(self):
+        # to be implemented
+        print('timelapsed not supported yet...')
+        return super().ticksgone()
 
     # return num of seconds lapsed since object created
-    def ticklapsed(self, time1=0):
-        tm = self.timelapsed(time1)
-        ticks = int(tm/g_tick_time) % g_tick_units
-        return ticks
+    def ticklapsed(self):
+        return super().ticksgone()
+
+    # eveluate sense impact comparing to another object. highest scale is 10
+    def impact(self, obj0):
+        return 10
 
     # def serialize(self):
     #     jmsg = json.dumps(self)

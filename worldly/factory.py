@@ -11,27 +11,28 @@ from worldly.touch_form import TouchForm
 def makeObjectFromDict(cname, cdict0):
     cdict = cdict0['FEAT']
     if cname == 'VisibleForm':
-        size=cdict['size']
         shape=cdict['shape']
         color=cdict['color']
-        return VisibleForm(size, shape, color)
+        size=cdict['size']
+        return VisibleForm(shape, color, size)
     elif cname == 'SoundForm':
+        soundtype=cdict['soundtype']
         loudness=cdict['loudness']
         pitch=cdict['pitch']
         frequency=cdict['frequency']
-        return SoundForm(loudness, pitch, frequency)
+        return SoundForm(soundtype, loudness, pitch, frequency)
     elif cname == 'SmellForm':
-        intensity = cdict['intensity']
         smell = cdict['smell']
-        return SmellForm(intensity, smell)
+        intensity = cdict['intensity']
+        return SmellForm(smell, intensity)
     elif cname == 'TasteForm':
         taste=cdict['taste']
-        temprature=cdict['temprature']
         richness=cdict['richness']
-        return TasteForm(taste, temprature, richness)
+        return TasteForm(taste, richness)
     elif cname == 'TouchForm':
+        touchtype=cdict['touchtype']
         pressure=cdict['pressure']
         texture=cdict['texture']
-        return TouchForm(pressure, texture)
+        return TouchForm(touchtype, pressure, texture)
     else:
         return None

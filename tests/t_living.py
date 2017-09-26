@@ -8,6 +8,34 @@ from senses.sense_base import *
 from tests.t_scenario import get_scen
 
 
+# test class method with thread
+class ThreadingExample(object):
+    def __init__(self, interval=1):
+        self.interval = interval
+        self.pausing = False
+        thread = Thread(target=self.run, args=())
+        thread.daemon = True                            # Daemonize thread
+        thread.start()                                  # Start the execution
+
+    def run(self):
+        """ Method that runs forever """
+        while True and not self.pausing:
+            # Do something
+            print('Doing something imporant in the background')
+
+            time.sleep(self.interval)
+        print('Daemon paused...')
+
+    def pause(self):
+        self.pausing = True
+
+example = ThreadingExample()
+time.sleep(3)
+print('Checkpoint')
+time.sleep(2)
+print('Bye')
+example.pause()
+
 # create a dummy person/being
 eye = SenseEye([10, 10])
 ear = SenseEar([10, 10])
@@ -33,7 +61,7 @@ def do_eye(q, scen):
     while True:
         scen.post(q)
         cnt += 1
-        print('\nEvent posted...%d' %cnt)
+        print('\nEvent posted...', cnt)
         time.sleep(10)
 
 t_eye = Thread(target=do_eye, args=(q, scen))
@@ -50,7 +78,7 @@ while True:
         cnt += 1
         e = q.get()
         rslt = dummy.process(e, e.ticks_passed)
-        print('\nOne event processed...%d' %cnt)
+        print('\nOne event processed...', cnt)
         if rslt == False:
             print('Exception... break')
             break
@@ -75,11 +103,10 @@ def testTimer():
     if run == "start":
         # Loop until we reach 20 minutes running
         while mins != 2:
-            print(">>>>>>>>>>>>>>>>>>>>> %f" %mins)
+            print(">>>>>>>>>>>>>>>>>>>>> %f", mins)
             # Sleep for a minute
             time.sleep(10)
             # Increment the minute total
             mins += 1
         # Bring up the dialog box here
         print('wake up')
-

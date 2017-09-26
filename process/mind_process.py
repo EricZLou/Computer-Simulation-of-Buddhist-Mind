@@ -1,7 +1,5 @@
 # Mind door process - Clear/Non-clear
 #   four folds: very clear, clear, obscure, very obscure
-# Uses cogprocess.py
-# For the mind door process, prints full string of steps
 
 from process.globalvar import *
 from process.cogprocess import CognitiveProcess
@@ -37,9 +35,9 @@ class MindProcess(CognitiveProcess):
         # course ending with registration
         print('very clear object mind door process')
         str17 = self.dofutile(ba)
-        str17 = str17 + self.dodetermination(ba)
-        str17 = str17 + self.dojavana(ba)
-        str17 = str17 + self.doregistration()
+        str17 += self.dodetermination(ba)
+        str17 += self.dojavana(ba)
+        str17 += self.doregistration()
         print(str17)
 
     def javanacourse(self, ba, tickspast):
@@ -48,12 +46,12 @@ class MindProcess(CognitiveProcess):
         str17='P '
         if tickspast == g_tickpassed_great:
             str17='P P '
-        str17 = str17 + self.dofutile(ba)
-        str17 = str17 + self.dodetermination(ba)
-        str17 = str17 + self.dojavana(ba)
+        str17 += self.dofutile(ba)
+        str17 += self.dodetermination(ba)
+        str17 += self.dojavana(ba)
         # might have additional bavanga
         if tickspast < g_tickpassed_great:
-            str17 = str17 + 'B '
+            str17 += 'B '
         print(str17)
 
 
@@ -62,28 +60,28 @@ class MindProcess(CognitiveProcess):
         print('fine cognitive process-no javana')
         str17='P P P ' # already has three
         for j in range(g_tickpassed_great+1, tickspast):
-            str17 = str17 + 'P '
-        str17 = str17 + self.dofutile(ba)
-        str17 = str17 + self.dodetermination(ba)
-        str17 = str17 +'M '
+            str17 += 'P '
+        str17 += self.dofutile(ba)
+        str17 += self.dodetermination(ba)
+        str17 += 'M '
         if tickspast < g_tickpassed_fine:
-            str17 = str17 +'M '
+            str17 += 'M '
             for j in range(tickspast+1, g_tickpassed_fine):
-                str17 = str17 + 'B '
+                str17 += 'B '
         else:
             for j in range(tickspast+1, g_tickpassed_fine-1):
-                str17 = str17 + 'B '
+                str17 += 'B '
         print(str17)
 
     def futilecourse(self, ba, tickspast):
         print('very fine cognitive process-no determination')
         str17='P P P P P P P P ' # already has three
         for j in range(g_tickpassed_fine, tickspast):
-            str17 = str17 + 'P '
-        str17 = str17 + self.dofutile(ba)
-        str17 = str17 +'V '
+            str17 += 'P '
+        str17 += self.dofutile(ba)
+        str17 += 'V '
         for j in range(tickspast, g_tickpassed_veryfine):
-            str17 = str17 + 'B '
+            str17 += 'B '
         print(str17)
 
     def dodetermination(self, ba):

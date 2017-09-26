@@ -57,13 +57,13 @@ class TQueue(object):
         # usual get, doesn't care about life
         item = self.head.item
         self.head = self.head.next
-        self.len = self.len - 1
+        self.len -= 1
         if self.len == 0:
-            self.last = None
+            self.tail = None
         return item
 
     def front(self):
-        if self.len>0:
+        if self.len > 0:
             return self.head.item
         else:
             return self.head  # None any way

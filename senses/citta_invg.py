@@ -5,10 +5,15 @@
 
 from senses.citta import Citta
 
+
 class InvestigatingCitta(Citta):
-    def __init__(self):
-        super(Citta, self).__init__(self)
+    # three cittas: wholesome or unwholesome resultant accompanied w equnimity,
+    #     plus wholesome resultant with joy
+    def __init__(self, iswholesomerslt=True, equnimity=True):
+        super().__init__()
         self.features = {} # use dictionary to denote a series of features by label and value
+        self.iswholesomerslt = iswholesomerslt
+        self.equnimity = equnimity
 
     # evaluate and fill up features for the object associated with the citta
     def evaluate(self):
@@ -28,10 +33,32 @@ class InvestigatingCitta(Citta):
 
 # Determining citta:
 #     This determines an object by name, i.e., perception
+#     To be exact, this is MindDoorAdvertingCitta functions as determining
 
 
-class DetrminingCitta(Citta):
+class DeterminingCitta(Citta):
     def __init__(self):
-        super(Citta, self).__init__(self)
+        super().__init__()
         self.features = {}  # use dictionary to denote a series of features by label and value
 
+    def go(self):
+        if self.being is not None:
+            return self.being.recall(self.obj)  # Citta.obj, return name
+        else:
+            print('No being assigned in Determining citta. go() ignored.')
+
+# Registration citta:
+#     To be exact, this is citta that performs registration function
+#     it could be investigating citta or sense-sphere resultant cittas
+
+
+class RegistrationCitta(Citta):
+    def __init__(self):
+        super().__init__()
+        self.features = {}  # use dictionary to denote a series of features by label and value
+
+    def go(self):
+        if self.being is not None:
+            return self.being.memorize(self.obj)  # Citta.obj, return name
+        else:
+            print('No being assigned in registration citta. go() ignored.')

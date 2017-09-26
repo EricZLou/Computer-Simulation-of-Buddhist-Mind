@@ -9,4 +9,7 @@ g_tickpassed_veryfine = 15
 g_tickleft_verygreat = 16
 g_tickleft_great = 14
 g_tickleft_fine = 8
-g_tickleft_veryfine = 2
+g_tickleft_veryfine = 3
+
+g_impinge_score = 8
+g_thread_interval =  1 #this is in second

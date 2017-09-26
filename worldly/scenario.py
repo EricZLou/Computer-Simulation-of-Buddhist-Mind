@@ -3,43 +3,52 @@
 #
 import time
 import numpy.random as Ran
+from senses.events import SenseEvent
+from senses.ticked_object import TickedObj
 
-class SenseEvent(object):
-    def __init__(self, basetype, obj, env, time1, ticks):
-        self.basetype = basetype
-        self.obj = obj
-        self.env = env
-        self.timenow = time1  # py datetime
-        self.ticks_passed = ticks
 
-class Scenario(object):
+class Scenario(TickedObj):
     # need to maintain a clock
-    def __init__(self, env=None, theme='none'):
+    def __init__(self, tclock, env=None, theme='none'):
+        super().__init__(tclock, 1E10)  # 1E10 longest time
         self.theme = theme
         self.env = env
         self.objs = []  # obj list
-        self.time0 = time.time()
 
     def addObj(self, obj):
         # obj.bindScenario(self)
         self.objs.append(obj)
 
-    def run(self, time1):
+    def removeObj(self, obj):
+        # obj.bindScenario(self)
+        self.objs.remove(obj)
+
+    def run(self):
         # generate random events and post to queue. This is not a loop.
         nobj = len(self.objs)
-        iobj = Ran.randint(0, nobj)
+        if nobj < 2:
+            iobj = 0
+        else:
+            iobj = Ran.randint(0, nobj)
         obj = self.objs[iobj]
         # treating object itself as an event
         # compute ticks passed
-        ticks = obj.ticklapsed(time1)
+        ticks = obj.ticklapsed()
+        time1 = self.tickclock.current()
         evt = SenseEvent(obj.basetype, obj, self.env, time1, ticks)
         return evt
 
     def post(self, q):
-        # this posts sense events from this scenario to central queue q
-        time1 = time.time()
-        evt = self.run(time1)
+        # this posts all sense events from this scenario to central queue q, not sense queue
+        evt = self.run()
         q.post(evt)
+        return evt
+
+    def post_door(self, being):
+        # this posts sense events from each door to being which sorts out which q
+        evt = self.run()
+        being.post_door(evt)
+        return evt
 
     def print(self):
         print(self.theme)

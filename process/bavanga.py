@@ -1,5 +1,5 @@
 # bavanga stream
-# Changes tick count based on step
+
 
 class Bavanga(object):
     def __init__(self, citta):
@@ -10,11 +10,11 @@ class Bavanga(object):
         self.citta = citta
 
     def past(self):
-        print('past bavanga-')
+    #    print('past bavanga-')
         self.ticks += 1
 
     def vibrate(self):
-        print('bavanga vibrates-')
+     #   print('bavanga vibrates-')
         self.ticks += 1
 
     def arrest(self):

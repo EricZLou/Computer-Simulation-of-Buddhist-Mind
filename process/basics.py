@@ -1,21 +1,20 @@
 # bavanga stream
-# gives values to basic conditions
-from enum import Enum
+from enum import IntEnum
 
 
-class Wholesomeness(Enum):
+class Wholesomeness(IntEnum):
     wholesome = 1
     unwholesome = -1
     variable = 0
 
 
-class ObjectDesirable(Enum):
+class ObjectDesirable(IntEnum):
     undesirable = -1
     desirable = 0
     verydesirable = 1
 
 
-class Greatness(Enum):
+class Greatness(IntEnum):
     # physical object
     veryfine = 1
     fine = 2
@@ -23,7 +22,7 @@ class Greatness(Enum):
     verygreat = 4
 
 
-class Clearness(Enum):
+class Clearness(IntEnum):
     # mind object
     veryobscure = 1
     obscure = 2
@@ -31,7 +30,7 @@ class Clearness(Enum):
     veryclear = 4
 
 
-class Feelings(Enum):
+class Feelings(IntEnum):
     pleasant = 1
     pain = 2
     equnimity = 3
@@ -39,7 +38,7 @@ class Feelings(Enum):
     unpleasant = 5
 
 
-class SenseType(Enum):
+class SenseType(IntEnum):
     eye = 1
     ear = 2
     nose = 3
@@ -48,7 +47,7 @@ class SenseType(Enum):
     mind = 0
 
 
-class DoorType(Enum):
+class DoorType(IntEnum):
     eye = 1
     ear = 2
     nose = 3

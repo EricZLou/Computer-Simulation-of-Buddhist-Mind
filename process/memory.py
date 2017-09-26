@@ -19,13 +19,15 @@ class FeatureMemory(object):
 
 class ObjectMemory(object):
     match_floor = 0.9
-    match_perfect = 1.0
+    ObjectMemory = 1.0
     # Object repo is a dict of name-serialized_obj_string (JSON)
     def __init__(self, being):
         self.being = being
+        self.tag = ''  # object tag starts with empty
         self.objects = {}   # start with empty dict
 
     def addObject(self, name, featdct):
+        self.tag = name
         self.objects[name]= featdct
 
     def minmatch(self, features):
@@ -59,3 +61,18 @@ class ObjectMemory(object):
         if score0 >= ObjectMemory.match_perfect:
             return obj0
         return None # throw
+
+    def nameObj(self, features, matchmode = 0):
+        # name an object given its features
+        if matchmode == 0:  #exact match
+            obj = self.exactmatch(features)
+        elif matchmode == 1:  # best match
+            obj = self.bestmatch(features)
+        elif matchmode == 2:  # min match
+            obj = self.minmatch(features)
+        else:
+            print('\nfindObj: not supported matching mode.')
+        if obj is not None:
+            return obj.tag
+        else:
+            return ''
